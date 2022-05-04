@@ -1,7 +1,10 @@
+using System;
+
 namespace CashflowAPI.Models
 {
-    public class Account
+    public record Account
     {
-        
+        public Guid Id { get; init; }
+        public string Name { get; init; }
     }
 }
