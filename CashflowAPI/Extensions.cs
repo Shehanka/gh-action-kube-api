@@ -17,5 +17,13 @@ namespace CashflowAPI
                 CreatedDate = user.CreatedDate
             };
         }
+
+        public static ExpenseDto AsDto(this Expense expense)
+        {
+            return new ExpenseDto()
+            {
+                Id = expense.Id,
+            };
+        }
     }
 }
