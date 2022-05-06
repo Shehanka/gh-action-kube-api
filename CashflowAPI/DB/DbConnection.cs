@@ -1,25 +1,26 @@
+using CashflowAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace CashflowAPI.DB
 {
-    public class DbConnection: DbContext
+    public class DbConnection : DbContext
     {
-        public class DataContext : DbContext
+        public DbConnection()
         {
-            protected readonly IConfiguration Configuration;
+        }
 
-            public DataContext(IConfiguration configuration)
-            {
-                Configuration = configuration;
-            }
+        public DbConnection(DbContextOptions<DbConnection> options) : base(options)
+        {
+        }
 
-            protected override void OnConfiguring(DbContextOptionsBuilder options)
-            {
-                // in memory database used for simplicity, change to a real db for production applications
-                // options.UseInMemoryDatabase("TestDb");
-            }
+        public virtual DbSet<User> Users { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            
+            optionsBuilder.UseSqlServer("Server=tcp:cashflow-server.database.windows.net,1433;Initial Catalog=cashflow;Persist Security Info=False;User ID=chamod;Password=jYxped-0qente-jezdis;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }
