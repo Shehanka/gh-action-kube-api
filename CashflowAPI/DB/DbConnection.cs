@@ -22,5 +22,6 @@ namespace CashflowAPI.DB
             optionsBuilder.UseSqlServer("Server=tcp:cashflow-server.database.windows.net,1433;Initial Catalog=cashflow;Persist Security Info=False;User ID=chamod;Password=jYxped-0qente-jezdis;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             base.OnConfiguring(optionsBuilder);
         }
+
     }
 }
