@@ -2,8 +2,8 @@ using System;
 
 namespace CashflowAPI.Dto
 {
-    public record ExpenseDto
-    { 
+    public record CreateExpenseDto
+    {
         public Guid Id { get; init; }
         public string PaymentTo { get; init; }
         public string Description { get; init; }
@@ -11,6 +11,5 @@ namespace CashflowAPI.Dto
         public string AccountId { get; init; }
         public string UserId { get; init; }
         public double Amount { get; init; }
-        public DateTimeOffset CreatedDate { get; init; } 
     }
 }

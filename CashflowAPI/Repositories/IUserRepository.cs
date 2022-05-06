@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CashflowAPI.Models;
 
 namespace CashflowAPI.Repositories
@@ -9,5 +10,7 @@ namespace CashflowAPI.Repositories
         bool UpdateUser(User user);
         bool DeleteUser(Guid id);
         User GetUser(Guid id);
+        
+        IEnumerable<User> GetUsers();
     }
 }
