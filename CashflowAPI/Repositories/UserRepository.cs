@@ -28,7 +28,7 @@ namespace CashflowAPI.Repositories
             }
 
             _dbConnection.Users.Update(user);
-
+            _dbConnection.SaveChanges();
             return true;
         }
 
@@ -41,6 +41,7 @@ namespace CashflowAPI.Repositories
             }
 
             _dbConnection.Users.Remove(user);
+            _dbConnection.SaveChanges();
             return true;
         }
 

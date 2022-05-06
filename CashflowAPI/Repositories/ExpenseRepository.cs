@@ -14,22 +14,42 @@ namespace CashflowAPI.Repositories
 
         public bool CreateExpense(Expense expense)
         {
-            throw new NotImplementedException();
+            _dbConnection.Expenses.Add(expense);
+            _dbConnection.SaveChanges();
+            return true;
         }
 
         public bool DeleteExpense(Guid userId, Guid expenseId)
         {
-            throw new NotImplementedException();
+            var expense = _dbConnection.Expenses.Find(expenseId);
+            if (expense is null)
+            {
+                return false;
+            }
+
+            _dbConnection.Expenses.Remove(expense);
+            _dbConnection.SaveChanges();
+            return true;
         }
 
         public bool UpdateExpense(Expense expense)
         {
-            throw new NotImplementedException();
+            var expenseToUpdate = _dbConnection.Expenses.Find(expense.Id);
+            if (expenseToUpdate is null)
+            {
+                return false;
+            }
+
+            _dbConnection.Expenses.Update(expense);
+            _dbConnection.SaveChanges();
+            return true;
         }
 
         public Expense GetExpense(Guid userId, Guid expenseId)
         {
-            throw new NotImplementedException();
+            return _dbConnection.Expenses
+                .AsNoTracking()
+                .SingleOrDefault(e => e.Id == expenseId);
         }
 
         public IEnumerable<Expense> GetExpenses(Guid userId)
