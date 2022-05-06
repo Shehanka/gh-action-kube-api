@@ -32,6 +32,8 @@ namespace CashflowAPI
         {
             // Custom Services
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IExpenseRepository, ExpenseRepository>();
+            services.AddSingleton<IIncomeRepository, IncomeRepository>();
 
             // CORS enable
             services.AddCors(c =>

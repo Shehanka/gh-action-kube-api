@@ -21,12 +21,18 @@ namespace CashflowAPI.Controllers
 
         // POST /expenses
         [HttpPost]
-        public ActionResult<ExpenseDto> CreateExpense()
+        public ActionResult<ExpenseDto> CreateExpense(CreateExpenseDto expenseDto)
         {
             Expense expense = new()
             {
                 Id = Guid.NewGuid(),
-                CreatedDate = DateTimeOffset.UtcNow
+                CreatedDate = DateTimeOffset.UtcNow,
+                PaymentTo = expenseDto.PaymentTo,
+                Description = expenseDto.Description,
+                Category = expenseDto.Category,
+                AccountId = expenseDto.AccountId,
+                UserId = expenseDto.UserId,
+                Amount = expenseDto.Amount
             };
 
             _expenseRepository.CreateExpense(expense);
