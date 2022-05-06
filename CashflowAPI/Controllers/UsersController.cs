@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using CashflowAPI.Dto;
 using CashflowAPI.Models;
@@ -57,6 +58,13 @@ namespace CashflowAPI.Controllers
                 LastName = user.LastName,
                 Email = user.Email
             };
+        }
+        
+        // GET /users
+        [HttpGet]
+        public IEnumerable<UserDto> GetUsers()
+        {
+            return _userRepository.GetUsers().Select(user => user.AsDto());
         }
     }
 }

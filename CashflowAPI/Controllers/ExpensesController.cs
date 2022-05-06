@@ -20,6 +20,7 @@ namespace CashflowAPI.Controllers
         }
 
         // POST /expenses
+        [HttpPost]
         public ActionResult<ExpenseDto> CreateExpense()
         {
             Expense expense = new()
