@@ -1,11 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using CashflowAPI.DB;
 using CashflowAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CashflowAPI.Repositories
 {
     public class ExpenseRepository : IExpenseRepository
     {
+        private readonly DbConnection _dbConnection = new DbConnection(
+        );
+
         public bool CreateExpense(Expense expense)
         {
             throw new NotImplementedException();
@@ -28,7 +34,7 @@ namespace CashflowAPI.Repositories
 
         public IEnumerable<Expense> GetExpenses(Guid userId)
         {
-            throw new NotImplementedException();
+            return _dbConnection.Expenses.AsNoTracking().ToList();
         }
     }
 }

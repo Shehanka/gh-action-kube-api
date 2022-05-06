@@ -1,17 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CashflowAPI.DB;
 using CashflowAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CashflowAPI.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        
-        private DbConnection dbConnection = new DbConnection();
+        private readonly DbConnection _dbConnection = new DbConnection();
+
+        // public UserRepository(DbConnection dbConnection)
+        // {
+        //     _dbConnection = dbConnection;
+        // }
+
         public bool CreateUser(User user)
         {
-            throw new NotImplementedException();
+            _dbConnection.Users.Add(user);
+            _dbConnection.SaveChanges();
+
+            return true;
         }
 
         public bool UpdateUser(User user)
@@ -31,9 +41,8 @@ namespace CashflowAPI.Repositories
 
         public IEnumerable<User> GetUsers()
         {
-            
-            var usersData = dbConnection.Users;
-            return usersData;
+            return _dbConnection.Users.AsNoTracking()
+                .ToList();
         }
     }
 }
