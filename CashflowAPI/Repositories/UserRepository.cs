@@ -11,11 +11,6 @@ namespace CashflowAPI.Repositories
     {
         private readonly DbConnection _dbConnection = new DbConnection();
 
-        // public UserRepository(DbConnection dbConnection)
-        // {
-        //     _dbConnection = dbConnection;
-        // }
-
         public bool CreateUser(User user)
         {
             _dbConnection.Users.Add(user);
@@ -26,17 +21,38 @@ namespace CashflowAPI.Repositories
 
         public bool UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            var userUpdate = _dbConnection.Users.Find(user.Id);
+            if (userUpdate is null)
+            {
+                return false;
+            }
+
+            _dbConnection.Users.Update(user);
+
+            return true;
         }
 
         public bool DeleteUser(Guid id)
         {
-            throw new NotImplementedException();
+            var user = _dbConnection.Users.Find(id);
+            if (user is null)
+            {
+                return false;
+            }
+
+            _dbConnection.Users.Remove(user);
+            return true;
         }
 
         public User GetUser(Guid id)
         {
-            throw new NotImplementedException();
+            return _dbConnection.Users
+                .Include(u => u.Username)
+                .Include(u => u.FirstName)
+                .Include(u => u.LastName)
+                .Include(u => u.Email)
+                .Include(u => u.CreatedDate)
+                .AsNoTracking().SingleOrDefault(u => u.Id == id);
         }
 
         public IEnumerable<User> GetUsers()
