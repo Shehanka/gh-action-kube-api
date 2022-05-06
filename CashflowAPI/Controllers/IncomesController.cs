@@ -60,6 +60,7 @@ namespace CashflowAPI.Controllers
         }
         
         // DELETE /incomes/{userId}/{incomeId}
+        [HttpDelete]
         public ActionResult DeleteIncome(Guid userId, Guid incomeId)
         {
             var existingIncome = _incomeRepository.GetIncome(userId, incomeId);
