@@ -7,6 +7,6 @@ namespace CashflowAPI.Models
         public Guid Id { get; init; }
         public string Name { get; init; }
         public Int64 AccountNo { get; init; }
-        public string UserId { get; init; }
+        public User User { get; init; }
     }
 }

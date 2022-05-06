@@ -30,8 +30,8 @@ namespace CashflowAPI.Controllers
                 PaymentTo = expenseDto.PaymentTo,
                 Description = expenseDto.Description,
                 Category = expenseDto.Category,
-                AccountId = expenseDto.AccountId,
-                UserId = expenseDto.UserId,
+                Account = expenseDto.Account,
+                User = expenseDto.User,
                 Amount = expenseDto.Amount
             };
 
