@@ -63,7 +63,7 @@ namespace CashflowAPI.Controllers
         public ActionResult<ExpenseDto> GetExpense(Guid userId, Guid expenseId)
         {
             var expense = _expenseRepository.GetExpense(userId, expenseId).AsDto();
-            if (expense == null)
+            if (expense is null)
             {
                 return NotFound();
             }
@@ -83,7 +83,7 @@ namespace CashflowAPI.Controllers
         public ActionResult DeleteExpense(Guid userId, Guid expenseId)
         {
             var existingExpense = _expenseRepository.GetExpense(userId, expenseId);
-            if (existingExpense == null)
+            if (existingExpense is null)
             {
                 return NotFound();
             }

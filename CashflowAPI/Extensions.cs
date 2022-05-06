@@ -18,6 +18,17 @@ namespace CashflowAPI
             };
         }
 
+        public static AccountDto AsDto(this Account account)
+        {
+            return new AccountDto()
+            {
+                Id = account.Id,
+                Name = account.Name,
+                AccountNo = account.AccountNo,
+                User = account.User
+            };
+        }
+
         public static ExpenseDto AsDto(this Expense expense)
         {
             return new ExpenseDto()
