@@ -13,7 +13,10 @@ namespace CashflowAPI.DB
         {
         }
 
-        public virtual DbSet<User> Users { get; set; }
+        public DbSet<User> Users => Set<User>();
+        public DbSet<Account> Accounts => Set<Account>();
+        public DbSet<Expense> Expenses => Set<Expense>();
+        public DbSet<Income> Incomes => Set<Income>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
