@@ -1,7 +1,5 @@
 name: GitHub Registry Image Push
 on:
-  pull_request:
-    branches: [ main ]
   push:
     branches:
       - main
