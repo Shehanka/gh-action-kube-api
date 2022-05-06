@@ -27,8 +27,8 @@ namespace CashflowAPI
                 PaymentTo = expense.PaymentTo,
                 Description = expense.Description,
                 Category = expense.Category,
-                AccountId = expense.AccountId,
-                UserId = expense.UserId,
+                Account = expense.Account,
+                User = expense.User,
                 Amount = expense.Amount
             };
         }
@@ -42,8 +42,8 @@ namespace CashflowAPI
                 PaymentFrom = income.PaymentFrom,
                 Description = income.Description,
                 Category = income.Category,
-                AccountId = income.AccountId,
-                UserId = income.UserId,
+                Account = income.Account,
+                User = income.User,
                 Amount = income.Amount
             };
         }

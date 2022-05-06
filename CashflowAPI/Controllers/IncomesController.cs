@@ -50,8 +50,8 @@ namespace CashflowAPI.Controllers
                 PaymentFrom = incomeDto.PaymentFrom,
                 Description = incomeDto.Description,
                 Category = incomeDto.Category,
-                AccountId = incomeDto.AccountId,
-                UserId = incomeDto.UserId,
+                Account = incomeDto.Account,
+                User = incomeDto.User,
                 Amount = incomeDto.Amount
             };
 
