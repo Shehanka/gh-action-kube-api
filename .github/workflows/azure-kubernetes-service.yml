@@ -24,7 +24,7 @@ jobs:
       uses: azure/aks-set-context@v2.0
       with:
         method: kube-config
-        kubeconfig: "{{ secrets.KUBE_CONFIG }}"
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
     # Deploys application based on given manifest file
     - name: Deploys application
