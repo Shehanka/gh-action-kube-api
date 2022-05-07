@@ -20,5 +20,7 @@ spec:
       containers:
       - image: ghcr.io/shehanka/cashflow-api:latest
         name: cashflow-api
+        ports:
+        - containerPort: 80
         resources: {}
 status: {}
