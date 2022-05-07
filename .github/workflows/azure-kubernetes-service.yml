@@ -20,13 +20,11 @@ jobs:
     # Checks out the repository this file is in
     - uses: actions/checkout@v3
       
-    - name: Get K8s context
-      uses: Azure/aks-set-context@v2.0
+    - name: Set K8s context
+      uses: azure/k8s-set-context@v2
       with:
         method: kubeconfig
         kubeconfig: ${{ secrets.KUBE_CONFIG }}
-        resource-group: ${{ env.RESOURCE_GROUP }}
-        cluster-name: ${{ env.CLUSTER_NAME }}
 
     # Deploys application based on given manifest file
     - name: Deploys application
