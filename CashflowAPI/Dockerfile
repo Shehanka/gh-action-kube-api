@@ -5,11 +5,17 @@ WORKDIR /app
 COPY . ./
 # Restore as distinct layers
 RUN dotnet restore
+RUN dotnet build -c Release
 # Build and publish a release
 RUN dotnet publish -c Release -o out
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+# Production server container
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
+
+ENV ASPNETCORE_ENVIRONMENT Production
+ENV ASPNETCORE_URLS http://+:80
+EXPOSE 80
+
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "DotNet.Docker.dll"]
+ENTRYPOINT ["dotnet", "CashflowAPI.dll"]
