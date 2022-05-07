@@ -29,4 +29,4 @@ jobs:
     # Deploys application based on given manifest file
     - name: Deploys application
       run: | 
-        kubectl apply -f {{ DEPLOYMENT_MANIFEST_PATH }}
+        kubectl apply -f ${{ env.DEPLOYMENT_MANIFEST_PATH }}
