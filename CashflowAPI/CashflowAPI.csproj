@@ -21,7 +21,6 @@
     <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Migrations" />
     <Folder Include="Models\" />
   </ItemGroup>
 </Project>
