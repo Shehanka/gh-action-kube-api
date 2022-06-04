@@ -34,12 +34,11 @@ namespace CashflowAPI
             return new ExpenseDto()
             {
                 Id = expense.Id,
-                CreatedDate = expense.CreatedDate,
                 PaymentTo = expense.PaymentTo,
                 Description = expense.Description,
                 Category = expense.Category,
-                Account = expense.Account,
-                User = expense.User,
+                AccountId = expense.AccountId,
+                UserId = expense.UserId,
                 Amount = expense.Amount
             };
         }
@@ -53,8 +52,8 @@ namespace CashflowAPI
                 PaymentFrom = income.PaymentFrom,
                 Description = income.Description,
                 Category = income.Category,
-                Account = income.Account,
-                User = income.User,
+                AccountId = income.AccountId,
+                UserId = income.UserId,
                 Amount = income.Amount
             };
         }
